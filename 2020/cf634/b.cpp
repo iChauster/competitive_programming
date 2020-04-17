@@ -24,7 +24,7 @@ void solve() {
     int left = 0;
     // oscillate until n
     while (left < n) {
-        for (int i = 0; i < a; i ++) {
+        for (int i = 0; i < min(a, n - left); i ++) {
             answer[left + i] = sub[i]; 
         }
         left += a;
