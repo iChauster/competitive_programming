@@ -2,37 +2,32 @@ import collections
 import math
 
 m = {"S": (0,1), "N": (0,-1), "W": (-1,0), "E" : (1, 0)}
-ans = [1,1]
-
 
 def substring(s):
-	multiplier = 1
 	dx = 0
 	dy = 0
 	stackChange = list()
-	multi = list()
+	multi = [1]
 	for c in s:
-		if c.isdigit():
-			multi.append(int(c))
+		if c.isdigit():			
 			while (len(stackChange) > 0):
 				curr = stackChange.pop()
-				dx += curr[0] * multiplier
-				dy += curr[1] * multiplier
-			multiplier *= int(c)
+				dx = (dx + curr[0] * multi[-1]) % 1e9
+				dy = (dy + curr[1] * multi[-1]) % 1e9
+			multi.append(int(c) * multi[-1] % 1e9)
 		elif c == ')':
-			currMultiplier = multi.pop()
 			while (len(stackChange) > 0):
 				curr = stackChange.pop()
-				dx += curr[0] * multiplier
-				dy += curr[1] * multiplier
-			multiplier /= currMultiplier
+				dx = (dx + curr[0] * multi[-1]) % 1e9
+				dy = (dy + curr[1] * multi[-1]) % 1e9
+			multi.pop()
 		elif c.isalpha():
 			stackChange.append(m[c])
 
 	while (len(stackChange) > 0):
 			curr = stackChange.pop()
-			dx += curr[0] * multiplier
-			dy += curr[1] * multiplier
+			dx = (dx + curr[0] * multi[-1]) % 1e9
+			dy = (dy + curr[1] * multi[-1]) % 1e9
 	return (dx, dy)
 
 
