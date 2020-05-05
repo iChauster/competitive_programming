@@ -35,7 +35,10 @@
 *.in
 
 # Mac Storage Files
-.DS_Store
+*DS_Store
+*interactive_runner*
+*local_testing_tool*
+*.log
 
 # Python Cache
 __pycache__
