@@ -1,5 +1,5 @@
-//#include "../../cpp/config/bits/stdc++.h"
-#include <bits/stdc++.h>
+#include "../../cpp/config/bits/stdc++.h"
+//#include <bits/stdc++.h>
 
 using namespace std;
 string s;
@@ -19,8 +19,8 @@ void solve() {
 		char curr = s[right - 1];
 		for (int left = 0; left + right <= n; left ++) {
 			int r = left + right;
-			
 			// add to front
+			printf("%d %d: seeing if %c matches %c or %c\n", left, right, curr, target[left], target[r-1]);
 			if (left >= m || curr == target[left]) {
 				dp[left][r] += dp[left + 1][r] % 998244353;
 				dp[left][r] %= 998244353;

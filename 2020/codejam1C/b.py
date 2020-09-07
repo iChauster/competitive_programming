@@ -24,12 +24,15 @@ def solve() :
 	ub = int(input())
 	master = collections.defaultdict(int)
 	maxKeyLength = 0
+	m = collections.defaultdict(int)
 	for i in range(10000):
 		q, r = input().split()
+		for c in r:
+			m[c] += 1
 		master[r] += 1
 		maxKeyLength = max(maxKeyLength, len(r))
 
-
+	print(sorted(m.items(), key = lambda x: x[1], reverse = True))
 	ans = ["0"] * 10
 	f = first(master)
 	for i in range(1, maxKeyLength + 1):
