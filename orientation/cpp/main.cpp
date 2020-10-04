@@ -40,7 +40,7 @@ int sum(int v, int tl, int tr, int l, int r) {
 		return t[v];
 	} else {
 		int tm = (tl + tr) / 2;
-		return sum(v*2, tl, tm, l, min(r, tm)) + sum(v*2 + 1, tm + 1, tr,  max(r, tm + 1), r);
+		return sum(v*2, tl, tm, l, min(r, tm)) + sum(v*2 + 1, tm + 1, tr,  max(l, tm + 1), r);
 	}
 }
 
